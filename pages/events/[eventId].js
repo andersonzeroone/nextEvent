@@ -6,6 +6,8 @@ import EventLogistics from '../../components/event-detail/event-logistics';
 
 import EventContent from '../../components/event-detail/event-content';
 
+import ErrorAlert from '../../components/ui/error-alert'
+
 function EventsDetailPage() {
 
   const router = useRouter();
@@ -14,11 +16,9 @@ function EventsDetailPage() {
 
   const event = getEventById(eventId);
 
-  console.log(router.query)
-
 
   if (!event) {
-    return <p>Not found Event!</p>
+    return <ErrorAlert>Not found Event!</ErrorAlert>
   }
   return (
     <>
