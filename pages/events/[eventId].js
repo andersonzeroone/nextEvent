@@ -1,5 +1,6 @@
 import EventSummary from '../../components/event-detail/event-summary';
 import { getEventById, getAllEvents, getFeaturedEvents } from '../../helpers/api-util';
+import Head from 'next/head';
 
 import EventLogistics from '../../components/event-detail/event-logistics';
 
@@ -16,6 +17,14 @@ function EventsDetailPage(props) {
   }
   return (
     <>
+
+      <Head>
+        <title>{event.title}</title>
+        <meta
+          name='description'
+          content='find a lot of great events'
+        />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
