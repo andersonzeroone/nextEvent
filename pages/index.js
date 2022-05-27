@@ -1,24 +1,23 @@
-import { getFeaturedEvents } from './../helpers/api-util'
-import EventList from '../components/events/event-list';
 import Head from 'next/head';
 
+import { getFeaturedEvents } from '../helpers/api-util';
+import EventList from '../components/events/event-list';
+import NewsletterRegistration from '../components/input/newsletter-registration';
 
 function HomePage(props) {
-
-  const { events } = props;
-
   return (
     <div>
       <Head>
-        <title>NextJs events</title>
+        <title>NextJS Events</title>
         <meta
           name='description'
-          content='find a lot of great events'
+          content='Find a lot of great events that allow you to evolve...'
         />
       </Head>
-      <EventList items={events} />
+      <NewsletterRegistration />
+      <EventList items={props.events} />
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -26,10 +25,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      events: featuredEvents
+      events: featuredEvents,
     },
-    revalidate: 600
-  }
+    revalidate: 1800,
+  };
 }
 
 export default HomePage;
